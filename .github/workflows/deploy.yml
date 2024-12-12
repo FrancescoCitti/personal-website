@@ -13,12 +13,13 @@ jobs:
     # Step 1: Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v3
+      submodules: recursive
 
     # Step 2: Set up Hugo
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
       with:
-        hugo-version: 'latest'
+        submodules: recursive
 
     # Step 3: Build the Hugo site
     - name: Build Hugo site
