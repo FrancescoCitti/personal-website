@@ -26,5 +26,5 @@ jobs:
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         publish_dir: ./public
-        external_repository: your-username/my-website-pages
+        external_repository: FrancescoCitti/my-website-pages
         publish_branch: main
