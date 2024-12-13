@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout your Hugo site repository
-      - name: Checkout Hugo site repository
+      # 1. Checkout the private repository (your Hugo source code)
+      - name: Checkout Hugo repository
         uses: actions/checkout@v3
 
       # 2. Set up Hugo
-      - name: Set up Hugo
+      - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
@@ -24,26 +24,11 @@ jobs:
       - name: Build Hugo site
         run: hugo --minify
 
-      # 4. Checkout the GitHub Pages repository
-      - name: Checkout GitHub Pages repository
-        uses: actions/checkout@v3
+      # 4. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          repository: FrancescoCitti/my-website-pages
-          token: ${{ secrets.PERSONAL_TOKEN }}
-          ref: main
-
-      # 5. Copy built files to the Pages repository
-      - name: Copy built files
-        run: |
-          rm -rf ./*
-          cp -r ../public/* ./
-
-      # 6. Commit and push the changes
-      - name: Commit and push changes
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Deploy Hugo site"
-          git push origin main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: francescocitti.com
 
