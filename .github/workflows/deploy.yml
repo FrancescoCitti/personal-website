@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the private repository (where you're building the site)
+      # 1. Checkout the private repository (code repository)
       - name: Checkout private repository (code repository)
         uses: actions/checkout@v3
 
@@ -39,11 +39,12 @@ jobs:
       - name: Add CNAME file
         run: echo "francescocitti.com" > public/CNAME
 
-      # 6. Copy the built Hugo site to the 'public' directory in the public repo
-      - name: Copy built files to public repo folder
+      # 6. Copy the built Hugo site to the 'public' directory in the public repo, excluding CNAME
+      - name: Copy built files to public repo folder, excluding CNAME
         run: |
-          # We copy files excluding CNAME
-          cp -r public/* public/  # Copy the contents from private repo's public folder
+          # Copy everything except the CNAME file
+          shopt -s extglob
+          cp -r public/!(CNAME) public/
 
       # 7. Commit and push changes to the public repository
       - name: Commit and push changes to public repository (main branch)
