@@ -45,7 +45,13 @@ jobs:
           # Copy everything from public/ except CNAME using find command
           find public/ -maxdepth 1 ! -name 'CNAME' -exec cp -r {} public/ \;
 
-      # 7. Commit and push changes to the public repository
+      # 7. Set Git user identity
+      - name: Set Git user identity
+        run: |
+          git config --global user.email "you@example.com"   # Use your email address here
+          git config --global user.name "GitHub Actions"     # You can set any name here
+
+      # 8. Commit and push changes to the public repository
       - name: Commit and push changes to public repository (main branch)
         run: |
           cd public
