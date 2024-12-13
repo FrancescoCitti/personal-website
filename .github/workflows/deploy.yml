@@ -10,25 +10,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository containing the Hugo source files
-      - name: Checkout repository
+      # 1. Checkout your Hugo site repository
+      - name: Checkout Hugo site repository
         uses: actions/checkout@v3
 
       # 2. Set up Hugo
-      - name: Setup Hugo
+      - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
 
       # 3. Build the Hugo site
-      - name: Build Hugo Site
+      - name: Build Hugo site
         run: hugo --minify
 
-      # 4. Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 4. Checkout the GitHub Pages repository
+      - name: Checkout GitHub Pages repository
+        uses: actions/checkout@v3
         with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}  # GitHub Personal Access Token
-          publish_dir: ./public  # Directory containing the built site
-          cname: francescocitti.com  # Set the custom domain
+          repository: FrancescoCitti/my-website-pages
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          ref: main
+
+      # 5. Copy built files to the Pages repository
+      - name: Copy built files
+        run: |
+          rm -rf ./*
+          cp -r ../public/* ./
+
+      # 6. Commit and push the changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Deploy Hugo site"
+          git push origin main
 
