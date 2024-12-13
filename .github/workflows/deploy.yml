@@ -34,6 +34,6 @@ jobs:
           git add .
           git commit --allow-empty -m 'Redeployed site'
           git branch -M gh-pages
-          git remote add origin https://github.com/<your-username>/<your-repo>.git
+          git remote add origin https://github.com/francescocitti/personal-website/
           git push --force origin gh-pages
 
