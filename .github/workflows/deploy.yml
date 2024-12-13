@@ -1,9 +1,10 @@
 name: Publish to GH Pages
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allows manual triggering from the GitHub Actions UI
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   deploy:
@@ -14,26 +15,29 @@ jobs:
         with:
           submodules: true
 
+      - name: Checkout destination
+        uses: actions/checkout@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          ref: gh-pages
+          path: built-site
+
       - name: Setup Hugo
         run: |
-          curl -L -o /tmp/hugo.tar.gz 'https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_Linux-64bit.tar.gz'
-          tar -C /usr/local/bin -xzvf /tmp/hugo.tar.gz hugo
+          curl -L -o /tmp/hugo.tar.gz 'https://github.com/gohugoio/hugo/releases/download/v0.139.4/hugo_extended_0.139.4_Linux-64bit.tar.gz'
+          tar -C ${RUNNER_TEMP} -zxvf /tmp/hugo.tar.gz hugo          
 
-      - name: Build site
-        run: hugo --minify
+      - name: Build
+        run: ${RUNNER_TEMP}/hugo --minify
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
         run: |
-          rm -rf ${GITHUB_WORKSPACE}/built-site
-          mkdir -p ${GITHUB_WORKSPACE}/built-site
           cp -R public/* ${GITHUB_WORKSPACE}/built-site/
           cd ${GITHUB_WORKSPACE}/built-site
-          git init
+          git add .
           git config user.name 'Francesco Citti'
           git config user.email 'myservices@francescocitti.com'
-          git add .
-          git commit --allow-empty -m 'Redeployed site'
-          git branch -M gh-pages
-          git remote add origin https://github.com/francescocitti/personal-website/
-          git push --force origin gh-pages
+          git commit --allow-empty -m 'Updated site'
+          git push origin gh-pages
 
