@@ -1,4 +1,5 @@
-baseURL = "https://example.com"
+baseURL = "https://francescocitti.github.io/my-website-pages/"
+
 title   = "Francesco Citti"
 languageCode = "en-us"
 theme = "hello-friend-ng"
