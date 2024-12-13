@@ -20,10 +20,10 @@ buildDrafts  = false
 buildFuture  = false
 buildExpired = false
 
-canonifyURLs = true
+canonifyURLs = false
 
 #added
-relativeURLs = false
+relativeURLs = true
 #end of added
 
 enableRobotsTXT = true

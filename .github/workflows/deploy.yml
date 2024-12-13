@@ -3,18 +3,18 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to the 'main' branch
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the private repository (code repository)
-      - name: Checkout private repository (code repository)
+      # Checkout the code repository
+      - name: Checkout code repository
         uses: actions/checkout@v3
 
-      # 2. Set up Hugo and build the site
+      # Set up Hugo and build the site
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -23,38 +23,26 @@ jobs:
       - name: Build Hugo Site
         run: hugo --minify
 
-      # 3. Checkout the public repository (where GitHub Pages is hosted)
-      - name: Checkout public repository (GitHub Pages repository)
+      # Checkout the deployment repository
+      - name: Checkout deployment repository
         uses: actions/checkout@v3
         with:
-          repository: FrancescoCitti/my-website-pages  # Your public repo name
-          token: ${{ secrets.PERSONAL_TOKEN }}  # Use the personal token secret
-          ref: main  # Explicitly specify the branch here
+          repository: FrancescoCitti/my-website-pages
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          ref: main
 
-      # 4. Create the 'public' directory if it doesn't exist in the public repository
-      - name: Create public directory
-        run: mkdir -p public
-
-      # 5. Add the CNAME file to the public directory in the public repo
-      - name: Add CNAME file
-        run: echo "francescocitti.com" > public/CNAME
-
-      # 6. Copy the built Hugo site to the 'public' directory in the public repo, excluding CNAME
-      - name: Copy built files to public repo folder, excluding CNAME
+      # Copy built Hugo files to the deployment repository
+      - name: Deploy to GitHub Pages
         run: |
-          # Copy everything from public/ except CNAME using find command
-          find public/ -maxdepth 1 ! -name 'CNAME' -exec cp -r {} public/ \;
+          rm -rf ./*
+          cp -r ../public/* .
+          echo "francescocitti.com" > CNAME
 
-      # 7. Set Git user identity
-      - name: Set Git user identity
+      # Set up Git and push changes
+      - name: Commit and Push
         run: |
-          git config --global user.email "you@example.com"   # Use your email address here
-          git config --global user.name "GitHub Actions"     # You can set any name here
-
-      # 8. Commit and push changes to the public repository
-      - name: Commit and push changes to public repository (main branch)
-        run: |
-          cd public
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
           git add .
           git commit -m "Deploy Hugo site"
           git push origin main
