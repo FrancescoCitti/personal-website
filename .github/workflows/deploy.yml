@@ -39,9 +39,10 @@ jobs:
       - name: Add CNAME file
         run: echo "francescocitti.com" > public/CNAME
 
-      # 6. Copy the built Hugo site to the 'public' directory in the public repo (without overwriting the CNAME file)
+      # 6. Copy the built Hugo site to the 'public' directory in the public repo
       - name: Copy built files to public repo folder
         run: |
+          # We copy files excluding CNAME
           cp -r public/* public/  # Copy the contents from private repo's public folder
 
       # 7. Commit and push changes to the public repository
