@@ -3,47 +3,32 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deployment on push to the 'main' branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code repository
-      - name: Checkout code repository
+      # 1. Checkout the repository containing the Hugo source files
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Hugo and build the site
+      # 2. Set up Hugo
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
 
+      # 3. Build the Hugo site
       - name: Build Hugo Site
         run: hugo --minify
 
-      # Checkout the deployment repository
-      - name: Checkout deployment repository
-        uses: actions/checkout@v3
-        with:
-          repository: FrancescoCitti/my-website-pages
-          token: ${{ secrets.PERSONAL_TOKEN }}
-          ref: main
-
-      # Copy built Hugo files to the deployment repository
+      # 4. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        run: |
-          rm -rf ./*
-          cp -r ../public/* .
-          echo "francescocitti.com" > CNAME
-
-      # Set up Git and push changes
-      - name: Commit and Push
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "Deploy Hugo site"
-          git push origin main
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}  # GitHub Personal Access Token
+          publish_dir: ./public  # Directory containing the built site
+          cname: francescocitti.com  # Set the custom domain
 
