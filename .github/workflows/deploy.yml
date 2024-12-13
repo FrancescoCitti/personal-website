@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout the private repository (where you're building the site)
       - name: Checkout private repository (code repository)
         uses: actions/checkout@v3
 
+      # 2. Set up Hugo and build the site
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -21,20 +23,28 @@ jobs:
       - name: Build Hugo Site
         run: hugo --minify
 
+      # 3. Checkout the public repository (where GitHub Pages is hosted)
       - name: Checkout public repository (GitHub Pages repository)
         uses: actions/checkout@v3
         with:
-          repository: FrancescoCitti/my-website-pages  # Correct public repo name
+          repository: FrancescoCitti/my-website-pages  # Your public repo name
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: main  # Explicitly specify the branch here
 
+      # 4. Create the 'public' directory if it doesn't exist in the public repository
+      - name: Create public directory
+        run: mkdir -p public
+
+      # 5. Add the CNAME file to the public directory in the public repo
       - name: Add CNAME file
         run: echo "francescocitti.com" > public/CNAME
 
+      # 6. Copy the built Hugo site to the 'public' directory in the public repo
       - name: Copy built files to public repo folder
         run: |
           cp -r public/* public/
 
+      # 7. Commit and push changes to the public repository
       - name: Commit and push changes to public repository (main branch)
         run: |
           cd public
