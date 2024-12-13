@@ -42,9 +42,8 @@ jobs:
       # 6. Copy the built Hugo site to the 'public' directory in the public repo, excluding CNAME
       - name: Copy built files to public repo folder, excluding CNAME
         run: |
-          # Copy everything except the CNAME file
-          shopt -s extglob
-          cp -r public/!(CNAME) public/
+          # Copy everything from public/ except CNAME using find command
+          find public/ -maxdepth 1 ! -name 'CNAME' -exec cp -r {} public/ \;
 
       # 7. Commit and push changes to the public repository
       - name: Commit and push changes to public repository (main branch)
