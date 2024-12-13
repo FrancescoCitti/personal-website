@@ -24,21 +24,20 @@ jobs:
       - name: Checkout public repository (GitHub Pages repository)
         uses: actions/checkout@v3
         with:
-          repository: FrancescoCitti/my-website-pagesur-public-repo  # Replace with your public repository name
+          repository: FrancescoCitti/my-website-pages  # Correct public repo name
           token: ${{ secrets.GITHUB_TOKEN }}
-	  ref: main  # Explicitly specify the branch here
-          path: public-repo
+          ref: main  # Explicitly specify the branch here
 
       - name: Add CNAME file
-        run: echo "francescocitti.com" > public-repo/public/CNAME
+        run: echo "francescocitti.com" > public/CNAME
 
       - name: Copy built files to public repo folder
         run: |
-          cp -r public/* public-repo/public/
+          cp -r public/* public/
 
       - name: Commit and push changes to public repository (main branch)
         run: |
-          cd public-repo
+          cd public
           git add .
           git commit -m "Deploy Hugo site"
           git push origin main
