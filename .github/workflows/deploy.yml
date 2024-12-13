@@ -24,8 +24,9 @@ jobs:
       - name: Checkout public repository (GitHub Pages repository)
         uses: actions/checkout@v3
         with:
-          repository: your-username/your-public-repo  # Replace with your public repository name
+          repository: FrancescoCitti/my-website-pagesur-public-repo  # Replace with your public repository name
           token: ${{ secrets.GITHUB_TOKEN }}
+	  ref: main  # Explicitly specify the branch here
           path: public-repo
 
       - name: Add CNAME file
