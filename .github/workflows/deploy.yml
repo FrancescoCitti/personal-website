@@ -3,13 +3,14 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - main  # Or your primary branch
+      - main  # Trigger deployment on push to the 'main' branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout private repository (code repository)
         uses: actions/checkout@v3
 
       - name: Setup Hugo
@@ -17,20 +18,27 @@ jobs:
         with:
           hugo-version: 'latest'
 
-      - name: Install dependencies
-        run: |
-          # If you have any custom steps to install dependencies
-          echo "Installing dependencies"
-
       - name: Build Hugo Site
         run: hugo --minify
 
-      - name: Add CNAME file
-        run: echo "francescocitti.com" > public/CNAME
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout public repository (GitHub Pages repository)
+        uses: actions/checkout@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          repository: your-username/your-public-repo  # Replace with your public repository name
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: public-repo
+
+      - name: Add CNAME file
+        run: echo "francescocitti.com" > public-repo/public/CNAME
+
+      - name: Copy built files to public repo folder
+        run: |
+          cp -r public/* public-repo/public/
+
+      - name: Commit and push changes to public repository (main branch)
+        run: |
+          cd public-repo
+          git add .
+          git commit -m "Deploy Hugo site"
+          git push origin main
 
