@@ -4,12 +4,19 @@ on:
   push:
     branches:
       - main
+    workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Update Submodules
+        run: |
+  	  git submodule sync --recursive
+          git submodule update --init --recursive
+
       # Step 1: Checkout the private repository
       - name: Checkout repository
         uses: actions/checkout@v3
