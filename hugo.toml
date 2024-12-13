@@ -1,4 +1,4 @@
-baseURL = "https://francescocitti.github.io/personal-website/"
+baseURL = "https://francescocitti.com"
 
 title   = "Francesco Citti"
 languageCode = "en-us"
@@ -19,7 +19,7 @@ buildDrafts  = false
 buildFuture  = false
 buildExpired = false
 
-canonifyURLs = false
+canonifyURLs = true
 
 #added
 relativeURLs = true
