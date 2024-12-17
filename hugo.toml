@@ -132,7 +132,7 @@ disableHugoGeneratorInject = false
   [params.footer]
     trademark = 2025
     rss = false
-    copyright = true
+    copyright = false
     author = true
 
     topText = []
@@ -166,10 +166,10 @@ disableHugoGeneratorInject = false
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   # Uncomment this if you want a portrait on your start page
   #
-  # [params.portrait]
-  #   path     = "/img/image.jpg"
-  #   alt      = "Portrait"
-  #   maxWidth = "50px"
+   [params.portrait]
+     path     = "/img/image.jpg"
+     alt      = "Portrait"
+     maxWidth = "50px"
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
   # Addon: Commento
@@ -229,25 +229,22 @@ disableHugoGeneratorInject = false
   # Addon: Social icons
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   #
-  [[params.social]]
-    name = "x"
-    url  = "https://twitter.com/"
 
   [[params.social]]
     name = "email"
-    url  = "mailto:nobody@example.com"
+    url  = "mailto:francesco.citti@tuta.com"
 
   [[params.social]]
     name = "github"
-    url  = "https://github.com/"
+    url  = "https://github.com/francescocitti"
 
   [[params.social]]
     name = "linkedin"
     url  = "https://www.linkedin.com/"
 
-  [[params.social]]
-    name = "stackoverflow"
-    url  = "https://www.stackoverflow.com/"
+#  [[params.social]]
+#    name = "stackoverflow"
+#    url  = "https://www.stackoverflow.com/"
 
 [languages]
   [languages.en]
@@ -269,7 +266,7 @@ disableHugoGeneratorInject = false
     url        = "about/"
   [[menu.main]]
     identifier = "cv"
-    name       = "cv"
+    name       = "Cv"
     url        = "cv/"
   [[menu.main]]
     identifier = "projects"
