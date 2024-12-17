@@ -167,7 +167,7 @@ disableHugoGeneratorInject = false
   # Uncomment this if you want a portrait on your start page
   #
    [params.portrait]
-     path     = "/img/image.jpg"
+     path     = "/img/profile-pic.jpg"
      alt      = "Portrait"
      maxWidth = "50px"
 
