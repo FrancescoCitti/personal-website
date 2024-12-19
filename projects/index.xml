@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on Francesco Citti</title><link>https://francescocitti.com/projects/</link><description>Recent content in Projects on Francesco Citti</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 17 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://francescocitti.com/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="-project-overview">🚀 Project Overview&lt;/h2>
+&lt;p>In modern cloud infrastructures, &lt;strong>security monitoring&lt;/strong> is critical to identify and respond to potential threats quickly.&lt;br>
+This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> by leveraging &lt;strong>AWS Lambda&lt;/strong> functions and integrating them with S3 buckets for log storage.&lt;/p>
+&lt;p>The goal?&lt;/p>
+&lt;ul>
+&lt;li>Create a lightweight, automated pipeline for &lt;strong>real-time threat detection&lt;/strong>.&lt;/li>
+&lt;li>Reduce the need for manual monitoring of GuardDuty alerts.&lt;/li>
+&lt;li>Provide actionable insights for incident response.&lt;/li>
+&lt;/ul>
+&lt;p>By automating security monitoring, organizations can ensure that critical threats are flagged and escalated without delay.&lt;/p></description></item><item><title>Building a Machine Learning-Based Threat Detection System</title><link>https://francescocitti.com/projects/ml-threat-detection/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/ml-threat-detection/</guid><description>&lt;h2 id="-overview">🚀 Overview&lt;/h2>
+&lt;p>In this project, I built a &lt;strong>threat detection system&lt;/strong> using machine learning and log data.&lt;/p>
+&lt;hr>
+&lt;h2 id="1-data-preprocessing">1. &lt;strong>Data Preprocessing&lt;/strong>&lt;/h2>
+&lt;p>Here’s an example of raw logs and how I processed them:&lt;/p>
+&lt;p>&lt;strong>Raw Logs&lt;/strong>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>Dec 15 00:12:10 server sshd[12345]: Failed password for invalid user admin from 192.168.1.2 port 22
+&lt;/code>&lt;/pre>&lt;p>&lt;strong>Python Code for Preprocessing&lt;/strong>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> pandas &lt;span style="color:#66d9ef">as&lt;/span> pd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Load log file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logs &lt;span style="color:#f92672">=&lt;/span> pd&lt;span style="color:#f92672">.&lt;/span>read_csv(&lt;span style="color:#e6db74">&amp;#34;auth.log&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Extract IP and Status&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logs[&lt;span style="color:#e6db74">&amp;#34;IP&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> logs[&lt;span style="color:#e6db74">&amp;#34;raw&amp;#34;&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>str&lt;span style="color:#f92672">.&lt;/span>extract(&lt;span style="color:#e6db74">r&lt;/span>&lt;span style="color:#e6db74">&amp;#39;from (\d+\.\d+\.\d+\.\d+)&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logs[&lt;span style="color:#e6db74">&amp;#34;Status&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> logs[&lt;span style="color:#e6db74">&amp;#34;raw&amp;#34;&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>str&lt;span style="color:#f92672">.&lt;/span>contains(&lt;span style="color:#e6db74">&amp;#34;Failed&amp;#34;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>replace({&lt;span style="color:#66d9ef">True&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Failed&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">False&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Success&amp;#34;&lt;/span>})
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(logs&lt;span style="color:#f92672">.&lt;/span>head())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="2-building-the-isolation-forest-model">2. &lt;strong>Building the Isolation Forest Model&lt;/strong>&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> sklearn.ensemble &lt;span style="color:#f92672">import&lt;/span> IsolationForest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Feature engineering&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>features &lt;span style="color:#f92672">=&lt;/span> logs[[&lt;span style="color:#e6db74">&amp;#34;IP&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Timestamp&amp;#34;&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>features[&lt;span style="color:#e6db74">&amp;#34;IP&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> features[&lt;span style="color:#e6db74">&amp;#34;IP&amp;#34;&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>astype(&lt;span style="color:#e6db74">&amp;#34;category&amp;#34;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>cat&lt;span style="color:#f92672">.&lt;/span>codes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Train Isolation Forest&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>model &lt;span style="color:#f92672">=&lt;/span> IsolationForest(contamination&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0.01&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logs[&lt;span style="color:#e6db74">&amp;#34;Anomaly&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> model&lt;span style="color:#f92672">.&lt;/span>fit_predict(features)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># View anomalies&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(logs[logs[&lt;span style="color:#e6db74">&amp;#34;Anomaly&amp;#34;&lt;/span>] &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="results">Results&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Timestamp&lt;/th>
+ &lt;th>IP&lt;/th>
+ &lt;th>Status&lt;/th>
+ &lt;th>Anomaly&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>1702591930&lt;/td>
+ &lt;td>192.168.1.2&lt;/td>
+ &lt;td>Failed&lt;/td>
+ &lt;td>-1&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="-github-repository">🔗 GitHub Repository&lt;/h2>
+&lt;p>&lt;a href="https://github.com/FrancescoCitti/ml-threat-detection">Check the full code here&lt;/a>.&lt;/p></description></item></channel></rss>

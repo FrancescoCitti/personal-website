@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automation on Francesco Citti</title><link>https://francescocitti.com/tags/automation/</link><description>Recent content in Automation on Francesco Citti</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 17 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://francescocitti.com/tags/automation/index.xml" rel="self" type="application/rss+xml"/><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="-project-overview">🚀 Project Overview&lt;/h2>
+&lt;p>In modern cloud infrastructures, &lt;strong>security monitoring&lt;/strong> is critical to identify and respond to potential threats quickly.&lt;br>
+This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> by leveraging &lt;strong>AWS Lambda&lt;/strong> functions and integrating them with S3 buckets for log storage.&lt;/p>
+&lt;p>The goal?&lt;/p>
+&lt;ul>
+&lt;li>Create a lightweight, automated pipeline for &lt;strong>real-time threat detection&lt;/strong>.&lt;/li>
+&lt;li>Reduce the need for manual monitoring of GuardDuty alerts.&lt;/li>
+&lt;li>Provide actionable insights for incident response.&lt;/li>
+&lt;/ul>
+&lt;p>By automating security monitoring, organizations can ensure that critical threats are flagged and escalated without delay.&lt;/p></description></item></channel></rss>
