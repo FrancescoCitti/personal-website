@@ -169,7 +169,7 @@ disableHugoGeneratorInject = false
    [params.portrait]
      path     = "/img/profile-pic.jpg"
      alt      = "Portrait"
-     maxWidth = "50px"
+     maxWidth = "150px"
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
   # Addon: Commento
