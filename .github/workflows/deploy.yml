@@ -31,6 +31,11 @@ jobs:
       - name: Build site
         run: ${RUNNER_TEMP}/hugo --minify
 
+      - name: Clean destination folder
+        if: github.ref == 'refs/heads/main'
+        run: |
+          rm -rf ${GITHUB_WORKSPACE}/built-site/*
+
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
@@ -41,4 +46,3 @@ jobs:
           git config user.email 'myservices@francescocitti.com'
           git commit -m 'Updated site' || echo "No changes to commit"
           git push || echo "Nothing to push, site may already be up-to-date"
-
