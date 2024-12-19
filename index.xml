@@ -80,4 +80,118 @@ This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> b
 &lt;/ul>
 &lt;hr>
 &lt;h2 id="tech-stuff-if-you-care-about-that">Tech Stuff (If You Care About That)&lt;/h2>
-&lt;p>I’m pretty comfortable with all of this:&lt;/p></description></item><item><title>Ciao</title><link>https://francescocitti.com/ciao/</link><pubDate>Fri, 13 Dec 2024 17:33:19 +0000</pubDate><guid>https://francescocitti.com/ciao/</guid><description>&lt;p>CIOA&lt;/p></description></item></channel></rss>
+&lt;p>I’m pretty comfortable with all of this:&lt;/p></description></item><item><title>Ciao</title><link>https://francescocitti.com/ciao/</link><pubDate>Fri, 13 Dec 2024 17:33:19 +0000</pubDate><guid>https://francescocitti.com/ciao/</guid><description>&lt;p>CIOA&lt;/p></description></item><item><title>My Curriculum</title><link>https://francescocitti.com/cv/</link><pubDate>Wed, 14 Aug 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/cv/</guid><description>&lt;p>&lt;strong>&lt;a href="static/documents/cv_francesco_citti.pdf">Download My CV&lt;/a>&lt;/strong>&lt;/p>
+&lt;hr>
+&lt;h2 id="experience">Experience&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Position&lt;/th>
+ &lt;th>Company&lt;/th>
+ &lt;th>Duration&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Associate Security Engineer&lt;/strong>&lt;/td>
+ &lt;td>Phorest Salon Software&lt;/td>
+ &lt;td>Feb 2024 - Present&lt;/td>
+ &lt;td>As an Associate Security Engineer, I ensure the integrity, confidentiality, and availability of our salon software platforms. My daily tasks include conducting security assessments, implementing security controls, and managing incident responses. I also work closely with development teams to integrate security best practices into our CI/CD pipelines, ensuring our products are secure by design.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Cybersecurity Analyst&lt;/strong>&lt;/td>
+ &lt;td>NTT DATA&lt;/td>
+ &lt;td>Jul 2022 - Feb 2024&lt;/td>
+ &lt;td>At NTT DATA, I was responsible for overseeing the security operations for one of the largest banking institutions in Europe. This involved conducting vulnerability assessments, supervising penetration tests, and ensuring compliance with international security standards like NIST and ISO 27001. My efforts contributed to a 40% increase in coverage of the bank&amp;rsquo;s IT infrastructure without additional budget, thanks to optimized processes and methodologies I helped develop. Additionally, I led a comprehensive risk evaluation across 50+ facilities worldwide, strengthening the bank&amp;rsquo;s overall security posture.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Digital Advisor (Internship)&lt;/strong>&lt;/td>
+ &lt;td>Italian American Chamber of Commerce Midwest&lt;/td>
+ &lt;td>Jul 2020 - Feb 2021&lt;/td>
+ &lt;td>During my internship, I spearheaded the selection and implementation of a new CRM system that streamlined the Chamber&amp;rsquo;s operations, reducing errors and improving data accuracy. I also enhanced their import/export platform, making the process more efficient and user-friendly. My role involved close collaboration with various stakeholders to ensure the system met the Chamber&amp;rsquo;s unique needs, ultimately driving better engagement and service delivery.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="education">Education&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Degree&lt;/th>
+ &lt;th>Field&lt;/th>
+ &lt;th>University&lt;/th>
+ &lt;th>Year&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Master of Science&lt;/strong>&lt;/td>
+ &lt;td>Cyber Risk Strategy and Governance&lt;/td>
+ &lt;td>Politecnico di Milano &amp;amp; Bocconi University&lt;/td>
+ &lt;td>2024&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Bachelor of Science&lt;/strong>&lt;/td>
+ &lt;td>Computer Engineering&lt;/td>
+ &lt;td>University of Melbourne&lt;/td>
+ &lt;td>2018&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="skills">Skills&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Category&lt;/th>
+ &lt;th>Tools / Languages / Frameworks&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>DevOps Tools&lt;/strong>&lt;/td>
+ &lt;td>Docker, Kubernetes, Jenkins, Terraform&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Programming Languages&lt;/strong>&lt;/td>
+ &lt;td>Python, Go, JavaScript&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Security Tools&lt;/strong>&lt;/td>
+ &lt;td>Splunk, Wireshark, Nessus, Burp Suite&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Frameworks &amp;amp; Standards&lt;/strong>&lt;/td>
+ &lt;td>NIST Cybersecurity Framework, ISO 27001, GDPR, PCI DSS&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="certifications">Certifications&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Certification&lt;/th>
+ &lt;th>Issuer&lt;/th>
+ &lt;th>Date&lt;/th>
+ &lt;th>Credential ID&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://www.credly.com/badges/eb986f6f-6664-40f5-a022-7f22345eb347/public_url">&lt;strong>CompTIA Security+&lt;/strong>&lt;/a>&lt;/td>
+ &lt;td>CompTIA&lt;/td>
+ &lt;td>Oct 2023&lt;/td>
+ &lt;td>GZ2MJ9E6K2BQ18WV&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://www.bloomberg.com/professional/product/bloomberg-market-concepts/">&lt;strong>Bloomberg Market Concepts (BMC)&lt;/strong>&lt;/a>&lt;/td>
+ &lt;td>Bloomberg&lt;/td>
+ &lt;td>May 2020&lt;/td>
+ &lt;td>158897830564&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="contact-me">Contact Me&lt;/h2>
+&lt;p>Got a project in mind or just want to chat about something? Feel free to &lt;a href="mailto:francesco.citti@tuta.com">reach out&lt;/a>—I’m always open to new connections and opportunities!&lt;/p></description></item></channel></rss>
