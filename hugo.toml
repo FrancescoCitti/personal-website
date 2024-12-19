@@ -277,12 +277,3 @@ disableHugoGeneratorInject = false
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
-
-[outputs]
-home    = ["HTML"]   # Ensures the homepage generates an index.html
-section = ["HTML"]   # Ensures sections (e.g., blog) generate HTML
-taxonomy = ["HTML"]  # Ensures taxonomy pages (e.g., tags/categories) generate HTML
-term    = ["HTML"]   # Ensures terms (e.g., individual tags) generate HTML
-
-ignoreFiles = ["themes/hello-friend-ng/exampleSite/"]
-
