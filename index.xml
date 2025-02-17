@@ -97,7 +97,7 @@ This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> b
  &lt;td>&lt;strong>Associate Security Engineer&lt;/strong>&lt;/td>
  &lt;td>Phorest Salon Software&lt;/td>
  &lt;td>Feb 2024 - Present&lt;/td>
- &lt;td>As an Associate Security Engineer, I ensure the integrity, confidentiality, and availability of our salon software platforms. My daily tasks include conducting security assessments, implementing security controls, and managing incident responses. I also work closely with development teams to integrate security best practices into our CI/CD pipelines, ensuring our products are secure by design.&lt;/td>
+ &lt;td>Securing AWS infrastructure by reviewing and hardening Terraform configurations, implementing security controls, managing incident responses, and integrating observability tools like Honeycomb and OpenTelemetry. Conducting security assessments, integrating security best practices into CI/CD pipelines (GitHub Actions), and ensuring repository security through Dependabot and SonarQube.&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td>&lt;strong>Cybersecurity Analyst&lt;/strong>&lt;/td>
