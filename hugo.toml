@@ -68,8 +68,8 @@ disableHugoGeneratorInject = false
 
   # Metadata mostly used in document's head
   # 
-  description = "Nice theme for homepages and blogs"
-  keywords = ""
+  description = "Francesco Citti is a cybersecurity engineer focusing on cloud security, DevSecOps, and threat analysis."
+  keywords = "cybersecurity, cloud security, DevSecOps, AWS, Francesco Citti"
   images = [""]
 
   # Home subtitle of the index page.
@@ -251,13 +251,13 @@ disableHugoGeneratorInject = false
     weight    = 1
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
   [languages.en.params]
-    subtitle  = "Hello Friend NG Theme"
+    subtitle  = "Personal Website"
 
   [languages.fr]
     weight    = 2
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
   [languages.fr.params]
-    subtitle  = "Hello Friend NG Theme"
+    subtitle  = "Personal Website"
 
 [menu]
   [[menu.main]]
