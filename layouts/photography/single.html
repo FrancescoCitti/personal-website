@@ -5,7 +5,7 @@
 <!-- Masonry Grid -->
 <div class="photo-gallery">
     {{ range .Resources.ByType "image" }}
-    <img src="{{ .RelPermalink }}" alt="Photo" class="gallery-img">
+    <img class="gallery-img lazyload" data-src="{{ .RelPermalink }}" alt="Photo" loading="lazy">
     {{ else }}
     <p style="color: red;">No images found in this album.</p>
     {{ end }}
@@ -20,17 +20,17 @@
     <div class="nav-btn next" onclick="nextImage()">&#10095;</div>
 </div>
 
-
 <!-- 📌 CSS Enhancements -->
 <style>
-    /* 🔹 Descrizione album - Testo più grande e giustificato */
-    .album-description {
-        text-align: justify;
-        font-size: 22px;
-        line-height: 1.8;
-        max-width: 85vw; /* Mantiene lo stesso margine delle immagini */
-        margin: 0 auto 30px auto; /* Centrato e con margine inferiore */
-        padding: 0 5%; /* Evita che il testo tocchi i bordi */
+    /* 🔹 Ensure images fade in smoothly */
+    .lazyload {
+        opacity: 0;
+        filter: blur(10px);
+        transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+    }
+    .lazyloaded {
+        opacity: 1;
+        filter: blur(0);
     }
 
     .photo-gallery {
@@ -59,87 +59,47 @@
         transform: scale(1.05);
     }
 
-    /*  Lightbox Styling */
-    .lightbox {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.90);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out, visibility 0.2s;
-        z-index: 9999;
+    .album-description {
+        text-align: justify;
+        font-size: 22px;
+        line-height: 1.8;
+        max-width: 90vw; /* Matches the width of the photo gallery */
+        margin: 0 auto 30px auto; /* Centers it */
+        padding: 0; /* Removes unnecessary padding */
+        color: white; /* Adjust color if needed */
     }
 
-    .lightbox img {
-        max-width: 85vw;
-        max-height: 85vh;
-        border-radius: 10px;
-    }
-
-    .lightbox .counter {
-        color: white;
-        font-size: 18px;
-        margin-top: 10px;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 5px 10px;
-        border-radius: 6px;
-    }
-
-    .lightbox .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 50px;
-        font-size: 80px;
-        color: white;
-        cursor: pointer;
-    }
-
-    .lightbox .nav-btn {
-        position: absolute;
-        top: 50%;
-        font-size: 60px;
-        color: white;
-        cursor: pointer;
-        user-select: none;
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
-        transition: background 0.2s ease-in-out;
-    }
-
-    .lightbox .prev { left: 20px; }
-    .lightbox .next { right: 20px; }
-
-    .lightbox .nav-btn:hover {
-        background: rgba(0, 0, 0, 0.8);
-    }
-
-    .lightbox.visible {
-        visibility: visible;
-        opacity: 1;
-    }
 </style>
 
-<!-- ✅ Lightbox + Arrow Key Navigation -->
+<!-- ✅ Lazy Load + Lightbox + Arrow Key Navigation -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const images = document.querySelectorAll(".gallery-img");
+        const images = document.querySelectorAll(".lazyload");
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
         const counter = document.getElementById("counter");
         let currentIndex = 0;
 
+        // 🔹 Lazy Load Images on Scroll
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let img = entry.target;
+                    img.src = img.getAttribute("data-src");
+                    img.classList.remove("lazyload");
+                    img.classList.add("lazyloaded");
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: "50px" });
+
+        images.forEach(img => observer.observe(img));
+
+        // 🔹 Lightbox Functions
         function openLightbox(index) {
             document.body.classList.add("lightbox-open");
             currentIndex = index;
-            lightboxImg.src = images[currentIndex].src;
+            lightboxImg.src = images[currentIndex].getAttribute("data-src");
             counter.textContent = (currentIndex + 1) + " / " + images.length;
             lightbox.classList.add("visible");
         }
