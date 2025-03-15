@@ -1,0 +1,57 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+<div class="photography-gallery">
+    {{ range sort .Pages "Params.weight"}}
+    <a href="{{ .RelPermalink }}" class="gallery-item">
+        {{ with .Params.cover }}
+        <img src="{{ . | relURL }}" alt="Photography Cover">
+        {{ else }}
+        <img src="/default-thumbnail.jpg" alt="No Image">
+        {{ end }}
+        <h2>{{ .Title }}</h2>
+        {{ with .Date }}
+        <p class="date">{{ .Format "2006" }}</p>
+        {{ end }}
+    </a>
+    {{ end }}
+</div>
+
+<!-- ✅ Inject CSS directly here -->
+<style>
+    .photography-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
+        gap: 30px 15px; /* Adjusts row and column spacing */
+        justify-items: center;
+    }
+
+    .photography-gallery .gallery-item {
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photography-gallery .gallery-item img {
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px; /* Reduces gap between image and title */
+    }
+
+    .photography-gallery h2 {
+        margin-top: 5px; /* Reduces space between image and title */
+    }
+
+    .photography-gallery .date {
+        color: grey;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+
+{{ end }}
