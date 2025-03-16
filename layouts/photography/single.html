@@ -1,8 +1,7 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 <p class="album-description">{{ .Content }}</p>
-
-<!-- Masonry Grid -->
+<<!-- 📌 Photo Gallery -->
 <div class="photo-gallery">
     {{ range .Resources.ByType "image" }}
     <img class="gallery-img lazyload" data-src="{{ .RelPermalink }}" alt="Photo" loading="lazy">
@@ -11,7 +10,7 @@
     {{ end }}
 </div>
 
-<!-- Lightbox Overlay -->
+<!-- 📌 Lightbox Overlay -->
 <div id="lightbox" class="lightbox hidden">
     <span class="close-btn" onclick="closeLightbox()">×</span>
     <img id="lightbox-img" src="" alt="Lightbox Image" draggable="false" oncontextmenu="return false;">
@@ -20,17 +19,15 @@
     <div class="nav-btn next" onclick="nextImage()">&#10095;</div>
 </div>
 
-<!-- 📌 CSS Enhancements -->
+<!-- 📌 CSS Fixes -->
 <style>
-    /* 🔹 Ensure images fade in smoothly */
+    /* 🔹 Smooth Lazy Loading */
     .lazyload {
         opacity: 0;
-        filter: blur(10px);
-        transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+        transition: opacity 0.5s ease-in-out;
     }
     .lazyloaded {
         opacity: 1;
-        filter: blur(0);
     }
 
     .photo-gallery {
@@ -40,11 +37,6 @@
         margin: 20px auto;
         max-width: 90vw;
     }
-
-    /* 🔹 Mobile & Tablet Adjustments */
-    @media (max-width: 1024px) { .photo-gallery { column-count: 4; } }
-    @media (max-width: 768px) { .photo-gallery { column-count: 3; } }
-    @media (max-width: 480px) { .photo-gallery { column-count: 2; } }
 
     .photo-gallery img {
         width: 100%;
@@ -59,53 +51,130 @@
         transform: scale(1.05);
     }
 
-    .album-description {
-        text-align: justify;
-        font-size: 22px;
-        line-height: 1.8;
-        max-width: 90vw; /* Matches the width of the photo gallery */
-        margin: 0 auto 30px auto; /* Centers it */
-        padding: 0; /* Removes unnecessary padding */
-        color: white; /* Adjust color if needed */
-    }
+    /* 🔹 Lightbox Styling */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.90);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s;
+    z-index: 9999;
+}
+
+.lightbox.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 🔹 Lightbox Image */
+.lightbox img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 10px;
+}
+
+/* 🔹 Close (X) Button */
+.lightbox .close-btn {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 50px; /* ⬆️ Increased size */
+    color: white;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.2s ease-in-out;
+}
+
+.lightbox .close-btn:hover {
+    background: rgba(255, 255, 255, 0.3); /* ❌ Rimosso il rosso */
+}
+
+/* 🔹 Navigation Arrows */
+.lightbox .nav-btn {
+    position: absolute;
+    top: 50%; /* ✅ Centered vertically */
+    transform: translateY(-50%); /* ✅ Aligns with image center */
+    font-size: 60px; /* ⬆️ Increased size */
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: background 0.2s ease-in-out;
+}
+
+.lightbox .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox .prev { left: 30px; } /* ⬅️ Left Arrow */
+.lightbox .next { right: 30px; } /* ➡️ Right Arrow */
+
+/* 🔹 Image Counter */
+.lightbox .counter {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 15px;
+    border-radius: 6px;
+}
 
 </style>
 
-<!-- ✅ Lazy Load + Lightbox + Arrow Key Navigation -->
+<!-- 📌 JavaScript Fix -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const images = document.querySelectorAll(".lazyload");
+        const images = document.querySelectorAll(".gallery-img");
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
         const counter = document.getElementById("counter");
         let currentIndex = 0;
 
-        // 🔹 Lazy Load Images on Scroll
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    let img = entry.target;
-                    img.src = img.getAttribute("data-src");
-                    img.classList.remove("lazyload");
-                    img.classList.add("lazyloaded");
-                    observer.unobserve(img);
-                }
-            });
-        }, { rootMargin: "50px" });
+        // 🔹 Lazy Load Observer
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let img = entry.target;
+                        img.src = img.getAttribute("data-src");
+                        img.classList.add("lazyloaded");
+                        img.removeAttribute("data-src"); // Clean up
+                        observer.unobserve(img);
+                    }
+                });
+            }, { rootMargin: "50px" });
 
-        images.forEach(img => observer.observe(img));
+            images.forEach(img => observer.observe(img));
+        } else {
+            // 🔹 Fallback for Older Browsers
+            images.forEach(img => {
+                img.src = img.getAttribute("data-src");
+                img.classList.add("lazyloaded");
+            });
+        }
 
         // 🔹 Lightbox Functions
         function openLightbox(index) {
-            document.body.classList.add("lightbox-open");
             currentIndex = index;
-            lightboxImg.src = images[currentIndex].getAttribute("data-src");
+            lightboxImg.src = images[currentIndex].src;
             counter.textContent = (currentIndex + 1) + " / " + images.length;
             lightbox.classList.add("visible");
         }
 
         function closeLightbox() {
-            document.body.classList.remove("lightbox-open");
             lightbox.classList.remove("visible");
         }
 
@@ -123,6 +192,7 @@
             }
         }
 
+        // 🔹 Attach Click Events to Images
         images.forEach((img, index) => {
             img.addEventListener("click", () => openLightbox(index));
         });
@@ -146,4 +216,5 @@
         });
     });
 </script>
+
 {{ end }}
