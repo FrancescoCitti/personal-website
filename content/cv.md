@@ -46,4 +46,4 @@ date: 2024-08-14
 
 ## Contact Me
 
-Got a project in mind or just want to chat about something? Feel free to [reach out](mailto:francesco.citti@tuta.com)—I’m always open to new connections and opportunities!
+Got a project in mind or just want to chat? Feel free to [reach out](mailto:myservices@francescocitti.com).

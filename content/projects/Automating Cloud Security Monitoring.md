@@ -12,26 +12,25 @@ series = ["Cybersecurity Projects"]
 name = "Francesco Citti"
 +++
 
-## 🚀 Project Overview
+## Project Overview
 
-In modern cloud infrastructures, **security monitoring** is critical to identify and respond to potential threats quickly.  
+In modern cloud infrastructures, **security monitoring** is critical to identify and respond to potential threats quickly.
 This project focuses on **automating AWS GuardDuty alerts** by leveraging **AWS Lambda** functions and integrating them with S3 buckets for log storage.
 
-The goal?
+Goals:
 - Create a lightweight, automated pipeline for **real-time threat detection**.
 - Reduce the need for manual monitoring of GuardDuty alerts.
 - Provide actionable insights for incident response.
 
-By automating security monitoring, organizations can ensure that critical threats are flagged and escalated without delay.
-
 ---
 
-## 📌 Why Is This Relevant?
+## Why Is This Relevant?
 
-As organizations migrate to the cloud, **attack surfaces grow**, and **misconfigurations** can lead to vulnerabilities.  
+As organizations migrate to the cloud, attack surfaces grow, and misconfigurations can lead to vulnerabilities.
 AWS GuardDuty provides built-in threat detection, but it generates alerts that often require manual triage.
 
-### Key Challenges:
+### Key Challenges
+
 - **Volume of Alerts**: Too many GuardDuty findings can overwhelm a security team.
 - **Manual Handling**: Human intervention to review and respond to alerts slows down incident resolution.
 - **Integration with Workflows**: GuardDuty findings often need to be ingested into other tools or stored for compliance.
@@ -43,7 +42,7 @@ This project solves these problems by:
 
 ---
 
-## 🔧 Project Architecture
+## Architecture
 
 The system is built using the following AWS components:
 - **GuardDuty**: Detects and generates findings for potential threats.
@@ -51,29 +50,26 @@ The system is built using the following AWS components:
 - **S3 Buckets**: Stores findings for further analysis and compliance.
 - **CloudWatch Logs**: Enables logging of Lambda executions and troubleshooting.
 
-### **System Flow:**
+### System Flow
 
 1. GuardDuty generates findings.
 2. An **EventBridge Rule** triggers a Lambda function whenever a GuardDuty alert is generated.
-3. The Lambda function:
-    - Parses the GuardDuty finding.
-    - Stores the data in an **S3 bucket**.
-    - Logs the alert details for monitoring.
+3. The Lambda function parses the finding, stores it in an **S3 bucket**, and logs the alert details.
 4. Optional: Integrates findings with tools like **Slack** or **PagerDuty** for notifications.
 
 ---
 
-## 🛠️ Step-by-Step Implementation
+## Step-by-Step Implementation
 
-### **Step 1: Enable AWS GuardDuty**
+### Step 1: Enable AWS GuardDuty
 
 1. Open the **AWS Management Console** and navigate to GuardDuty.
 2. Enable GuardDuty for your AWS account and region.
-3. Configure the settings to ensure findings are generated for all relevant resources (e.g., EC2, IAM, S3).
+3. Configure the settings to ensure findings are generated for all relevant resources (EC2, IAM, S3).
 
 ---
 
-### **Step 2: Create the S3 Bucket**
+### Step 2: Create the S3 Bucket
 
 The S3 bucket will store processed GuardDuty findings.
 
@@ -81,7 +77,8 @@ The S3 bucket will store processed GuardDuty findings.
 - Enable **versioning** to keep track of changes.
 - Configure an appropriate **IAM policy** to allow Lambda write access.
 
-Example **IAM Policy** for the Lambda role:
+Example IAM policy for the Lambda role:
+
 ```json
 {
   "Version": "2012-10-17",
@@ -97,46 +94,39 @@ Example **IAM Policy** for the Lambda role:
 
 ---
 
-### **Step 3: Create the Lambda Function**
+### Step 3: Create the Lambda Function
 
-The Lambda function will process GuardDuty findings.
-
-#### **Python Code for Lambda:**
 ```python
 import json
 import boto3
 import os
 from datetime import datetime
 
-# Initialize S3 client
 s3 = boto3.client("s3")
 bucket_name = "guardduty-alerts-processed"
 
 def lambda_handler(event, context):
-    # Parse the GuardDuty finding from the event
     finding = event["detail"]
     finding_id = finding.get("id")
     severity = finding.get("severity")
     region = finding.get("region")
     timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    
-    # Prepare file name and data
+
     file_name = f"guardduty_finding_{finding_id}_{timestamp}.json"
     data = json.dumps(finding, indent=4)
-    
-    # Store finding in S3 bucket
+
     s3.put_object(Bucket=bucket_name, Key=file_name, Body=data)
-    
+
     print(f"Stored GuardDuty finding {finding_id} in {bucket_name}/{file_name}")
     return {"status": "success", "file_name": file_name}
 ```
 
 ---
 
-### **Step 4: Set Up EventBridge Rule**
+### Step 4: Set Up EventBridge Rule
 
 1. Open **Amazon EventBridge** in the AWS Console.
-2. Create a new rule with the following settings:
+2. Create a new rule:
     - **Event Source**: AWS services
     - **Service**: GuardDuty
     - **Event Type**: Findings
@@ -144,31 +134,31 @@ def lambda_handler(event, context):
 
 ---
 
-### **Step 5: Test the System**
+### Step 5: Test the System
 
-- Trigger a **GuardDuty alert** by simulating suspicious activity.
-- Verify that:
-    1. The Lambda function executes.
-    2. The processed finding is stored in the S3 bucket.
-    3. Logs appear in **CloudWatch Logs**.
+Trigger a **GuardDuty alert** by simulating suspicious activity, then verify:
+1. The Lambda function executes.
+2. The processed finding is stored in the S3 bucket.
+3. Logs appear in **CloudWatch Logs**.
 
-Example output in CloudWatch:
+Example CloudWatch output:
+
 ```
 Stored GuardDuty finding fd-12345678 in guardduty-alerts-processed/guardduty_finding_fd-12345678_2024-12-17-10-00-00.json
 ```
 
 ---
 
-## 📊 Results
+## Results
 
-After deployment, the system was able to:
-- Automatically process and store GuardDuty findings in **real time**.
-- Reduce manual handling of GuardDuty alerts by 70%.
-- Enable long-term storage and analysis of threat data for compliance.
+After deployment, the system:
+- Automatically processed and stored GuardDuty findings in real time.
+- Reduced manual handling of GuardDuty alerts by 70%.
+- Enabled long-term storage and analysis of threat data for compliance.
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 1. Integrate with **SNS** for real-time notifications.
 2. Enhance the Lambda function to categorize findings based on severity.
@@ -176,28 +166,19 @@ After deployment, the system was able to:
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
-| **Tool/Service**       | **Purpose**                          |
-|-------------------------|--------------------------------------|
-| AWS GuardDuty           | Threat detection                    |
-| AWS Lambda              | Real-time processing of findings    |
-| Amazon S3               | Storage for processed findings      |
-| EventBridge             | Automates event triggering          |
-| CloudWatch Logs         | Logs execution details for Lambda   |
-| Python (Boto3)          | Script Lambda function logic        |
-
----
-
-## 🔗 GitHub Repository
-
-You can find the full code and setup instructions here:  
-[**GitHub Repository**](https://github.com/FrancescoCitti/aws-guardduty-automation)
+| Tool/Service       | Purpose                              |
+|--------------------|--------------------------------------|
+| AWS GuardDuty      | Threat detection                     |
+| AWS Lambda         | Real-time processing of findings     |
+| Amazon S3          | Storage for processed findings       |
+| EventBridge        | Automates event triggering           |
+| CloudWatch Logs    | Logs execution details for Lambda    |
+| Python (Boto3)     | Script Lambda function logic         |
 
 ---
 
-## Final Thoughts 💡
+## GitHub Repository
 
-This project demonstrates how **automation** can streamline cloud security operations. By combining AWS GuardDuty with Lambda, you can build a robust, **low-cost threat detection pipeline** that scales with your cloud workloads.
-
-If you’re managing a cloud environment, integrating this kind of system is a no-brainer for improving security posture and response times. 🚀
+[aws-guardduty-automation](https://github.com/FrancescoCitti/aws-guardduty-automation)

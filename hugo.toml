@@ -232,7 +232,7 @@ disableHugoGeneratorInject = false
 
   [[params.social]]
     name = "email"
-    url  = "mailto:fr.ci@proton.me"
+    url  = "mailto:myservices@francescocitti.com"
 
   [[params.social]]
     name = "github"
