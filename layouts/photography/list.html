@@ -1,56 +1,104 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
+<div class="post">
+    <h1 class="phot-heading">Photography</h1>
+</div>
 
 <div class="photography-gallery">
     {{ range sort .Pages "Params.weight"}}
     <a href="{{ .RelPermalink }}" class="gallery-item">
         {{ with .Params.cover }}
-        <img src="{{ . | relURL }}" alt="Photography Cover">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}">
         {{ else }}
         <img src="/default-thumbnail.jpg" alt="No Image">
         {{ end }}
-        <h2>{{ .Title }}</h2>
-        {{ with .Date }}
-        <p class="date">{{ .Format "2006" }}</p>
-        {{ end }}
+        <div class="gallery-item-info">
+            <span class="gallery-item-title">{{ .Title }}</span>
+            {{ with .Date }}<span class="gallery-item-year">{{ .Format "2006" }}</span>{{ end }}
+        </div>
     </a>
     {{ end }}
 </div>
 
-<!-- ✅ Inject CSS directly here -->
 <style>
+    .phot-heading {
+        margin-bottom: 2rem;
+        letter-spacing: 0.02em;
+    }
+
     .photography-gallery {
         display: grid;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-        gap: 30px 15px; /* Adjusts row and column spacing */
-        justify-items: center;
-    }
-
-    .photography-gallery .gallery-item {
-        text-align: center;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .photography-gallery .gallery-item img {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
         width: 100%;
-        max-width: 400px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 700px) {
+        .photography-gallery {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .gallery-item {
+        position: relative;
+        display: block;
+        overflow: hidden;
         aspect-ratio: 3 / 2;
+        text-decoration: none;
+        background: #111;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px; /* Reduces gap between image and title */
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    filter 0.6s ease;
+        filter: brightness(0.85);
     }
 
-    .photography-gallery h2 {
-        margin-top: 5px; /* Reduces space between image and title */
+    .gallery-item:hover img {
+        transform: scale(1.04);
+        filter: brightness(0.6);
     }
 
-    .photography-gallery .date {
-        color: grey;
-        font-size: 14px;
-        margin-top: 10px;
+    .gallery-item-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px 20px 20px;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        transform: translateY(6px);
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-item-info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item-title {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .gallery-item-year {
+        color: rgba(255,255,255,0.55);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        font-variant-numeric: tabular-nums;
     }
 </style>
 
