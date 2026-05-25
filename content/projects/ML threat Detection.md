@@ -3,10 +3,7 @@
 title = "Building a Machine Learning-Based Threat Detection System"
 description = "An end-to-end cybersecurity project to detect threats using machine learning and log data."
 type = ["projects", "post"]
-tags = ["machine learning", "cybersecurity", "python", "threat detection"]
 date = "2024-12-17"
-categories = ["Cybersecurity", "Machine Learning"]
-series = ["Cybersecurity Projects"]
 [author]
 name = "Francesco Citti"
 +++
@@ -66,4 +63,4 @@ print(logs[logs["Anomaly"] == -1])
 
 ## GitHub Repository
 
-[ml-threat-detection](https://github.com/FrancescoCitti/ml-threat-detection)
+[github.com/FrancescoCitti/ml_threat_detection](https://github.com/FrancescoCitti/ml_threat_detection)

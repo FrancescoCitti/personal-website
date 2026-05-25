@@ -3,11 +3,7 @@
 title = "Automating Cloud Security Monitoring with AWS GuardDuty and Lambda"
 description = "How to build an automated security monitoring system using AWS GuardDuty, Lambda functions, and S3."
 type = ["projects", "post"]
-tags = ["aws", "cybersecurity", "automation", "cloud security", "lambda"]
 date = "2024-12-17"
-
-categories = ["Cloud Security", "Automation"]
-series = ["Cybersecurity Projects"]
 [author]
 name = "Francesco Citti"
 +++
@@ -181,4 +177,4 @@ After deployment, the system:
 
 ## GitHub Repository
 
-[aws-guardduty-automation](https://github.com/FrancescoCitti/aws-guardduty-automation)
+[github.com/FrancescoCitti/aws_guardduty_automation](https://github.com/FrancescoCitti/aws_guardduty_automation)
