@@ -1,31 +1,25 @@
 +++
-title = "Hey, I'm Francesco"
+title = "Francesco Citti"
 date = "2024-12-17"
 layout = "single"
 +++
 
-I build things, break things, and make sure they work better after.
+Francesco builds things, breaks things, and makes sure they work better after.
 
-Most days I'm in security systems—figuring out what's weak, automating what's slow, and keeping things from falling apart. Some people call it DevSecOps.
+Most of the work lives in security systems: finding what is weak, automating what is slow, and keeping things from falling apart. Some call it DevSecOps.
 
----
+## Work
 
-## What I Actually Do
+* **Finding the gaps**: The stuff most people miss.
+* **Fixing the mess**: Automate what is slow, secure what is weak, simplify what is annoying.
+* **Keeping things running**: Everything should just *work*.
 
-* **Find the gaps**: The stuff most people miss is what I look for.
-* **Fix the mess**: Automate what's slow, secure what's weak, simplify what's annoying.
-* **Keep things running**: I like it when everything just *works*.
-
----
-
-## When I'm Not Working
+## Outside Work
 
 * Climbing walls (sometimes mountains, sometimes metaphorical).
-* Gaming late at night—preferably something dark and immersive.
+* Gaming late at night, preferably something dark and immersive.
 * Digging into weird books or random rabbit holes.
 * Tinkering with side projects that make zero sense but are fun anyway.
-
----
 
 ## Tech
 
@@ -34,11 +28,8 @@ Most days I'm in security systems—figuring out what's weak, automating what's 
 * **Security**: GuardDuty, Nessus, Burp Suite
 * **Frameworks**: NIST, ISO 27001, GDPR
 
----
-
-## Let's Chat
+## Contact
 
 [myservices@francescocitti.com](mailto:myservices@francescocitti.com)
+[LinkedIn](https://www.linkedin.com/in/francescocitti/)
 [GitHub](https://github.com/FrancescoCitti)
-
----
