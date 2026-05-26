@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Francesco Citti</title><link>https://francescocitti.com/</link><description>Recent content on Francesco Citti</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 17 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://francescocitti.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Kathmandu</title><link>https://francescocitti.com/photography/kathmandu/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://francescocitti.com/photography/kathmandu/</guid><description>&lt;p>This album captures the vibrant soul of Kathmandu, Nepal—a city where ancient traditions and modern energy collide. From the bustling streets of Thamel, illuminated by neon lights and lined with eclectic shops, to the serene spiritual spaces of temples and monasteries, each photograph tells a story of contrast and harmony.&lt;/p>
-&lt;p>You&amp;rsquo;ll see the warmth of the local people, the quiet contemplation at sacred sites, and the mischievous gaze of temple monkeys perched above the city. The fluttering prayer flags at Swayambhunath and the rhythmic spin of prayer wheels evoke a timeless spirituality, while the narrow alleyways and markets reveal the pulse of everyday life.&lt;/p></description></item><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>The warmth of the local people, the quiet contemplation at sacred sites, and the mischievous gaze of temple monkeys perched above the city all find their place in these frames. The fluttering prayer flags at Swayambhunath and the rhythmic spin of prayer wheels evoke a timeless spirituality, while the narrow alleyways and markets reveal the pulse of everyday life.&lt;/p></description></item><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="project-overview">Project Overview&lt;/h2>
 &lt;p>In modern cloud infrastructures, &lt;strong>security monitoring&lt;/strong> is critical to identify and respond to potential threats quickly.
 This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> by leveraging &lt;strong>AWS Lambda&lt;/strong> functions and integrating them with S3 buckets for log storage.&lt;/p>
 &lt;p>Goals:&lt;/p>
@@ -59,24 +59,21 @@ AWS GuardDuty provides built-in threat detection, but it generates alerts that o
 &lt;/table>
 &lt;hr>
 &lt;h2 id="github-repository">GitHub Repository&lt;/h2>
-&lt;p>&lt;a href="https://github.com/FrancescoCitti/ml_threat_detection">github.com/FrancescoCitti/ml_threat_detection&lt;/a>&lt;/p></description></item><item><title>Hey, I'm Francesco</title><link>https://francescocitti.com/about/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/about/</guid><description>&lt;p>I build things, break things, and make sure they work better after.&lt;/p>
-&lt;p>Most days I&amp;rsquo;m in security systems—figuring out what&amp;rsquo;s weak, automating what&amp;rsquo;s slow, and keeping things from falling apart. Some people call it DevSecOps.&lt;/p>
-&lt;hr>
-&lt;h2 id="what-i-actually-do">What I Actually Do&lt;/h2>
+&lt;p>&lt;a href="https://github.com/FrancescoCitti/ml_threat_detection">github.com/FrancescoCitti/ml_threat_detection&lt;/a>&lt;/p></description></item><item><title>Francesco Citti</title><link>https://francescocitti.com/about/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/about/</guid><description>&lt;p>Francesco builds things, breaks things, and makes sure they work better after.&lt;/p>
+&lt;p>Most of the work lives in security systems: finding what is weak, automating what is slow, and keeping things from falling apart. Some call it DevSecOps.&lt;/p>
+&lt;h2 id="work">Work&lt;/h2>
 &lt;ul>
-&lt;li>&lt;strong>Find the gaps&lt;/strong>: The stuff most people miss is what I look for.&lt;/li>
-&lt;li>&lt;strong>Fix the mess&lt;/strong>: Automate what&amp;rsquo;s slow, secure what&amp;rsquo;s weak, simplify what&amp;rsquo;s annoying.&lt;/li>
-&lt;li>&lt;strong>Keep things running&lt;/strong>: I like it when everything just &lt;em>works&lt;/em>.&lt;/li>
+&lt;li>&lt;strong>Finding the gaps&lt;/strong>: The stuff most people miss.&lt;/li>
+&lt;li>&lt;strong>Fixing the mess&lt;/strong>: Automate what is slow, secure what is weak, simplify what is annoying.&lt;/li>
+&lt;li>&lt;strong>Keeping things running&lt;/strong>: Everything should just &lt;em>work&lt;/em>.&lt;/li>
 &lt;/ul>
-&lt;hr>
-&lt;h2 id="when-im-not-working">When I&amp;rsquo;m Not Working&lt;/h2>
+&lt;h2 id="outside-work">Outside Work&lt;/h2>
 &lt;ul>
 &lt;li>Climbing walls (sometimes mountains, sometimes metaphorical).&lt;/li>
-&lt;li>Gaming late at night—preferably something dark and immersive.&lt;/li>
+&lt;li>Gaming late at night, preferably something dark and immersive.&lt;/li>
 &lt;li>Digging into weird books or random rabbit holes.&lt;/li>
 &lt;li>Tinkering with side projects that make zero sense but are fun anyway.&lt;/li>
 &lt;/ul>
-&lt;hr>
 &lt;h2 id="tech">Tech&lt;/h2>
 &lt;ul>
 &lt;li>&lt;strong>Code&lt;/strong>: Python, Go, JavaScript&lt;/li>
@@ -84,9 +81,9 @@ AWS GuardDuty provides built-in threat detection, but it generates alerts that o
 &lt;li>&lt;strong>Security&lt;/strong>: GuardDuty, Nessus, Burp Suite&lt;/li>
 &lt;li>&lt;strong>Frameworks&lt;/strong>: NIST, ISO 27001, GDPR&lt;/li>
 &lt;/ul>
-&lt;hr>
-&lt;h2 id="lets-chat">Let&amp;rsquo;s Chat&lt;/h2>
+&lt;h2 id="contact">Contact&lt;/h2>
 &lt;p>&lt;a href="mailto:myservices@francescocitti.com">myservices@francescocitti.com&lt;/a>
+&lt;a href="https://www.linkedin.com/in/francescocitti/">LinkedIn&lt;/a>
 &lt;a href="https://github.com/FrancescoCitti">GitHub&lt;/a>&lt;/p></description></item><item><title>CV</title><link>https://francescocitti.com/cv/</link><pubDate>Wed, 14 Aug 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/cv/</guid><description>&lt;p>&lt;a href="./Francesco_Citti_cv.pdf" class="cv-download" download>Download CV&lt;/a>&lt;/p>
 &lt;style>
 .cv-download {
