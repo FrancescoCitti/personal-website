@@ -38,7 +38,7 @@ In AWS, administrator access does not require already being an administrator. Gi
 * A user with `iam:PassRole` and `ec2:RunInstances` can launch a server with an admin role attached and execute commands through it.
 * A user with `iam:CreateRole` and `iam:AttachRolePolicy` can create a brand new admin role and assume it.
 
-These combinations are hard to spot manually in accounts with many users, roles, groups, and layered policies. The tool automates the full analysis: 18 known escalation techniques checked against every identity in an account.
+These combinations are hard to spot manually in accounts with many users, roles, groups, and layered policies. The tool automates the full analysis: 26 known escalation techniques checked against every identity in an account.
 
 ## What It Produces
 
@@ -57,11 +57,15 @@ These combinations are hard to spot manually in accounts with many users, roles,
 | Attach Admin Policy to User / Group / Role | T1098.003 |
 | Put Inline Admin Policy on User / Group / Role | T1098.003 |
 | Create Access Key for Admin User | T1098.001 |
+| Reactivate Disabled Access Key for Admin User | T1098.001 |
 | Create Console Login for Admin User | T1098 |
 | Reset Admin User Password | T1098 |
 | Add Self to Admin Group | T1098 |
+| Deactivate MFA Device on Admin User | T1556.006 |
+| Delete Virtual MFA Device from Admin User | T1556.006 |
 | Backdoor Role Trust Policy | T1078.004 |
-| Pass Admin Role via EC2 / Lambda / CloudFormation / Glue | T1548 |
+| Directly Assume Admin Role | T1078.004 |
+| Pass Admin Role via EC2 / Lambda / CloudFormation / Glue / SageMaker / CodeBuild / ECS / Data Pipeline | T1548 |
 | Create and Assume New Admin Role | T1136.003 |
 
 ## Tech Stack
