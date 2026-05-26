@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on Francesco Citti</title><link>https://francescocitti.com/projects/</link><description>Recent content in Projects on Francesco Citti</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 17 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://francescocitti.com/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="project-overview">Project Overview&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on Francesco Citti</title><link>https://francescocitti.com/projects/</link><description>Recent content in Projects on Francesco Citti</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 26 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://francescocitti.com/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>go-escalation-check</title><link>https://francescocitti.com/projects/go-escalation-check/</link><pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/go-escalation-check/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>A Go command line tool that reads an AWS IAM configuration and maps every path an attacker could use to reach administrator access. For each finding it generates a ready to deploy fix: a deny based IAM policy and Terraform configuration that blocks the escalation path without touching any other permissions.&lt;/p>
+&lt;pre tabindex="0">&lt;code>go-escalation-check scan --snapshot testdata/sample_snapshot.json
+
+Loading IAM snapshot: testdata/sample_snapshot.json
+Loaded 4 users 3 roles 2 groups 4 managed policies
+
++-----------------+------+-------------------------------------+-----------+----------+
+| PRINCIPAL | KIND | TECHNIQUE | MITRE | SEVERITY |
++-----------------+------+-------------------------------------+-----------+----------+
+| alice | user | Create New Policy Version | T1484.001 | CRITICAL |
+| alice | user | Attach Admin Policy to User | T1098.003 | CRITICAL |
+| alice | user | Pass Admin Role via EC2 | T1548 | HIGH |
+| carol | user | Backdoor Role Trust Policy | T1078.004 | CRITICAL |
+| DeployRole | role | Put Inline Admin Policy on Role | T1098.003 | CRITICAL |
+
+37 finding(s) across 6 principal(s)
+&lt;/code>&lt;/pre>&lt;h2 id="the-problem">The Problem&lt;/h2>
+&lt;p>In AWS, administrator access does not require already being an administrator. Given the right combination of IAM permissions, even seemingly harmless ones, an identity can quietly grant itself full access. This is privilege escalation.&lt;/p></description></item><item><title>Automating Cloud Security Monitoring with AWS GuardDuty and Lambda</title><link>https://francescocitti.com/projects/automating-cloud-security-monitoring/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/automating-cloud-security-monitoring/</guid><description>&lt;h2 id="project-overview">Project Overview&lt;/h2>
 &lt;p>In modern cloud infrastructures, &lt;strong>security monitoring&lt;/strong> is critical to identify and respond to potential threats quickly.
 This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> by leveraging &lt;strong>AWS Lambda&lt;/strong> functions and integrating them with S3 buckets for log storage.&lt;/p>
 &lt;p>Goals:&lt;/p>
