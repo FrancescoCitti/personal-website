@@ -1,6 +1,6 @@
 
 +++
-title = "go-escalation-check"
+title = "IAM Privilege Escalation Checker in Go"
 description = "AWS IAM privilege escalation path analyzer and automated remediation generator, written in Go."
 type = ["projects", "post"]
 date = "2026-05-26"
