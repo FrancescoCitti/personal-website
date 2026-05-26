@@ -1,81 +1,261 @@
-body {
-	font-family: sans-serif ;
-	background: #110000 ;
-	color: #ccc ;
-}
-
-main {
-	max-width: 800px ;
-	margin: auto ;
-}
-
-img {
-	max-width: 100% ;
-}
-
-header h1 {
-	text-align: center ;
-}
-
-footer {
-	text-align: center ;
-	clear: both ;
-}
-
-/* For TAGLIST.HTML */
-.taglist {
-	text-align: center ;
-	clear: both ;
-}
-
-/* For NEXTPREV.HTML */
-#nextprev {
-	/* The container for both the previous and next articles. */
-}
-#prevart {
-	float: left ;
-	text-align: left ;
-}
-#nextart {
-	float: right ;
-	text-align: right ;
-}
-#nextart,#prevart {
-	max-width: 33% ;
-}
-
-/* Code block overrides — slimmer, more minimal */
+/* Code block overrides */
 .post-content pre,
 .post-content .highlight pre {
-	font-size: 0.82rem;
-	padding: 12px 16px;
-	border-radius: 4px;
-	border-left: 3px solid #555;
-	line-height: 1.5;
-	overflow-x: auto;
+    font-size: 0.82rem;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border-left: 3px solid #555;
+    line-height: 1.5;
+    overflow-x: auto;
 }
 
 .post-content code {
-	font-size: 0.85rem;
-	padding: 1px 5px;
-	border-radius: 3px;
+    font-size: 0.85rem;
+    padding: 1px 5px;
+    border-radius: 3px;
 }
 
 .post-content .highlight {
-	margin: 1.2em 0;
-	border-radius: 4px;
-	overflow: hidden;
+    margin: 1.2em 0;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-/* Tighten up tables in posts */
+/* Tables in posts */
 .post-content table {
-	font-size: 0.88rem;
-	border-collapse: collapse;
-	width: 100%;
+    font-size: 0.88rem;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 .post-content table th,
 .post-content table td {
-	padding: 6px 12px;
-	border: 1px solid #333;
+    padding: 6px 12px;
+    border: 1px solid #333;
+}
+
+/* Photography list */
+.phot-heading {
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+}
+
+.photography-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+    .photography-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gallery-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    text-decoration: none;
+    background: #111;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+    filter: brightness(0.85);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.6);
+}
+
+.gallery-item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    transform: translateY(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.gallery-item-year {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Photography single — gallery */
+.lazyload {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lazyloaded {
+    opacity: 1;
+}
+
+.photo-gallery {
+    column-count: 3;
+    column-gap: 4px;
+    margin: 32px auto 60px;
+    max-width: 92vw;
+}
+
+@media (max-width: 900px) {
+    .photo-gallery { column-count: 2; }
+}
+
+@media (max-width: 500px) {
+    .photo-gallery { column-count: 1; }
+}
+
+.photo-wrap {
+    break-inside: avoid;
+    margin-bottom: 4px;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+}
+
+.gallery-img {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: brightness(0.92);
+    transform: scale(1.0);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+}
+
+.photo-wrap:hover .gallery-img {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.album-description {
+    color: rgba(204,204,204,0.7);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 8, 0.97);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+.lightbox.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.lb-image-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 82vw;
+    max-height: 88vh;
+}
+
+#lightbox-img {
+    max-width: 82vw;
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 0 80px rgba(0,0,0,0.6);
+}
+
+.lb-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.45);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.lb-close:hover {
+    color: rgba(255,255,255,0.9);
+}
+
+.lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.35);
+    font-size: 52px;
+    font-weight: 200;
+    cursor: pointer;
+    padding: 16px 20px;
+    line-height: 1;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.lb-nav:hover {
+    color: rgba(255,255,255,0.85);
+}
+
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+
+.lb-counter {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.35);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }

@@ -4,9 +4,6 @@ title   = "Francesco Citti"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
-PygmentsCodeFences = true
-PygmentsStyle = "monokai"
-
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
 
 archetypeDir = "archetypes"
@@ -52,9 +49,6 @@ disableHugoGeneratorInject = false
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
-[blackfriday]
-  hrefTargetBlank = true
-
 [taxonomies]
   tag      = "tags"
   category = "categories"
@@ -70,7 +64,7 @@ disableHugoGeneratorInject = false
   # 
   description = "Francesco Citti is a cybersecurity engineer focusing on cloud security, DevSecOps, and threat analysis."
   keywords = "cybersecurity, cloud security, DevSecOps, AWS, Francesco Citti"
-  images = [""]
+  images = ["/img/profile-pic.jpg"]
 
   # Home subtitle of the index page.
   #
@@ -112,7 +106,7 @@ disableHugoGeneratorInject = false
   # Integrate Javascript files or stylesheets by adding the url to the external assets or by
   # linking local files with their path relative to the static folder, e.g. "css/styles.css"
   #
-  customCSS = []
+  customCSS = ["/style.css"]
   customJS  = []
 
   # Toggle this option need to rebuild SCSS, requires extended version of Hugo
@@ -282,6 +276,10 @@ disableHugoGeneratorInject = false
   weight     = 4
 
 [markup]
-[markup.goldmark]
-[markup.goldmark.renderer]
-unsafe = true
+  [markup.highlight]
+    style = "monokai"
+    codeFences = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

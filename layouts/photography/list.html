@@ -6,10 +6,12 @@
 <div class="photography-gallery">
     {{ range sort .Pages "Params.weight"}}
     <a href="{{ .RelPermalink }}" class="gallery-item">
-        {{ with .Params.cover }}
-        <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+        {{ $cover := .Resources.GetMatch "cover.jpg" }}
+        {{ if $cover }}
+            {{ $thumb := $cover.Fill "800x534 webp q75" }}
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}">
         {{ else }}
-        <img src="/default-thumbnail.jpg" alt="No Image">
+            <img src="/default-thumbnail.jpg" alt="{{ .Title }}">
         {{ end }}
         <div class="gallery-item-info">
             <span class="gallery-item-title">{{ .Title }}</span>
@@ -18,88 +20,5 @@
     </a>
     {{ end }}
 </div>
-
-<style>
-    .phot-heading {
-        margin-bottom: 2rem;
-        letter-spacing: 0.02em;
-    }
-
-    .photography-gallery {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3px;
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto 60px;
-        padding: 0 20px;
-        box-sizing: border-box;
-    }
-
-    @media (max-width: 700px) {
-        .photography-gallery {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .gallery-item {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        aspect-ratio: 3 / 2;
-        text-decoration: none;
-        background: #111;
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                    filter 0.6s ease;
-        filter: brightness(0.85);
-    }
-
-    .gallery-item:hover img {
-        transform: scale(1.04);
-        filter: brightness(0.6);
-    }
-
-    .gallery-item-info {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 40px 20px 20px;
-        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        transform: translateY(6px);
-        opacity: 0;
-        transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .gallery-item:hover .gallery-item-info {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .gallery-item-title {
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-
-    .gallery-item-year {
-        color: rgba(255,255,255,0.55);
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
-        font-variant-numeric: tabular-nums;
-    }
-</style>
 
 {{ end }}

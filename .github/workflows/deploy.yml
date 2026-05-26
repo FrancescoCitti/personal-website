@@ -16,7 +16,15 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Cache Hugo binary
+        id: cache-hugo
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/hugo
+          key: hugo-extended-0.139.4
+
       - name: Setup Hugo
+        if: steps.cache-hugo.outputs.cache-hit != 'true'
         run: |
           curl -L -o /tmp/hugo.tar.gz 'https://github.com/gohugoio/hugo/releases/download/v0.139.4/hugo_extended_0.139.4_Linux-64bit.tar.gz'
           tar -C ${RUNNER_TEMP} -zxvf /tmp/hugo.tar.gz hugo

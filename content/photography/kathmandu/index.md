@@ -1,7 +1,6 @@
 ---
 title: "Kathmandu"
 date: ""
-cover: "/photography/kathmandu/cover.jpg"
 weight: 1
 ---
 
