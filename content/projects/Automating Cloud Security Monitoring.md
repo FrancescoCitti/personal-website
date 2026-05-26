@@ -14,9 +14,9 @@ In modern cloud infrastructures, **security monitoring** is critical to identify
 This project focuses on **automating AWS GuardDuty alerts** by leveraging **AWS Lambda** functions and integrating them with S3 buckets for log storage.
 
 Goals:
-- Create a lightweight, automated pipeline for **real-time threat detection**.
-- Reduce the need for manual monitoring of GuardDuty alerts.
-- Provide actionable insights for incident response.
+* Create a lightweight, automated pipeline for **real-time threat detection**.
+* Reduce the need for manual monitoring of GuardDuty alerts.
+* Provide actionable insights for incident response.
 
 ---
 
@@ -27,9 +27,9 @@ AWS GuardDuty provides built-in threat detection, but it generates alerts that o
 
 ### Key Challenges
 
-- **Volume of Alerts**: Too many GuardDuty findings can overwhelm a security team.
-- **Manual Handling**: Human intervention to review and respond to alerts slows down incident resolution.
-- **Integration with Workflows**: GuardDuty findings often need to be ingested into other tools or stored for compliance.
+* **Volume of Alerts**: Too many GuardDuty findings can overwhelm a security team.
+* **Manual Handling**: Human intervention to review and respond to alerts slows down incident resolution.
+* **Integration with Workflows**: GuardDuty findings often need to be ingested into other tools or stored for compliance.
 
 This project solves these problems by:
 1. Automating the detection, storage, and categorization of GuardDuty findings.
@@ -41,10 +41,10 @@ This project solves these problems by:
 ## Architecture
 
 The system is built using the following AWS components:
-- **GuardDuty**: Detects and generates findings for potential threats.
-- **AWS Lambda**: Processes GuardDuty findings automatically in real-time.
-- **S3 Buckets**: Stores findings for further analysis and compliance.
-- **CloudWatch Logs**: Enables logging of Lambda executions and troubleshooting.
+* **GuardDuty**: Detects and generates findings for potential threats.
+* **AWS Lambda**: Processes GuardDuty findings automatically in real-time.
+* **S3 Buckets**: Stores findings for further analysis and compliance.
+* **CloudWatch Logs**: Enables logging of Lambda executions and troubleshooting.
 
 ### System Flow
 
@@ -69,9 +69,9 @@ The system is built using the following AWS components:
 
 The S3 bucket will store processed GuardDuty findings.
 
-- **Bucket Name**: `guardduty-alerts-processed`
-- Enable **versioning** to keep track of changes.
-- Configure an appropriate **IAM policy** to allow Lambda write access.
+* **Bucket Name**: `guardduty-alerts-processed`
+* Enable **versioning** to keep track of changes.
+* Configure an appropriate **IAM policy** to allow Lambda write access.
 
 Example IAM policy for the Lambda role:
 
@@ -123,9 +123,9 @@ def lambda_handler(event, context):
 
 1. Open **Amazon EventBridge** in the AWS Console.
 2. Create a new rule:
-    - **Event Source**: AWS services
-    - **Service**: GuardDuty
-    - **Event Type**: Findings
+    * **Event Source**: AWS services
+    * **Service**: GuardDuty
+    * **Event Type**: Findings
 3. Configure the Lambda function as the **target**.
 
 ---
@@ -148,9 +148,9 @@ Stored GuardDuty finding fd-12345678 in guardduty-alerts-processed/guardduty_fin
 ## Results
 
 After deployment, the system:
-- Automatically processed and stored GuardDuty findings in real time.
-- Reduced manual handling of GuardDuty alerts by 70%.
-- Enabled long-term storage and analysis of threat data for compliance.
+* Automatically processed and stored GuardDuty findings in real time.
+* Reduced manual handling of GuardDuty alerts by 70%.
+* Enabled long-term storage and analysis of threat data for compliance.
 
 ---
 

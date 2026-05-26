@@ -1,5 +1,5 @@
 
-# Francesco Citti - Personal Website
+# Francesco Citti — Personal Website
 
 Personal portfolio built with **Hugo** and the **hello-friend-ng** theme. Covers projects, CV, and photography.
 
@@ -7,11 +7,11 @@ Personal portfolio built with **Hugo** and the **hello-friend-ng** theme. Covers
 
 ## Tech Stack
 
-- **Framework**: Hugo (Static Site Generator)
-- **Theme**: hello-friend-ng
-- **Hosting**: GitHub Pages
-- **Styling**: SCSS and Monokai for code blocks
-- **Automation**: GitHub Actions deploys to `gh-pages` on push
+* **Framework**: Hugo (Static Site Generator)
+* **Theme**: hello-friend-ng
+* **Hosting**: GitHub Pages
+* **Styling**: SCSS and Monokai for code blocks
+* **Automation**: GitHub Actions deploys to `gh-pages` on push
 
 ---
 
@@ -96,5 +96,5 @@ Place your profile picture at `static/img/image.jpg` and update `hugo.toml`:
 ## Author
 
 **Francesco Citti**
-- GitHub: [@FrancescoCitti](https://github.com/FrancescoCitti)
-- Email: [myservices@francescocitti.com](mailto:myservices@francescocitti.com)
+* GitHub: [@FrancescoCitti](https://github.com/FrancescoCitti)
+* Email: [myservices@francescocitti.com](mailto:myservices@francescocitti.com)
