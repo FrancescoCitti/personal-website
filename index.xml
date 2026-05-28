@@ -38,7 +38,7 @@ This project focuses on &lt;strong>automating AWS GuardDuty alerts&lt;/strong> b
 &lt;hr>
 &lt;h2 id="why-is-this-relevant">Why Is This Relevant?&lt;/h2>
 &lt;p>As organizations migrate to the cloud, attack surfaces grow, and misconfigurations can lead to vulnerabilities.
-AWS GuardDuty provides built-in threat detection, but it generates alerts that often require manual triage.&lt;/p></description></item><item><title>Building a Machine Learning-Based Threat Detection System</title><link>https://francescocitti.com/projects/ml-threat-detection/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/ml-threat-detection/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+AWS GuardDuty provides built-in threat detection, but it generates alerts that often require manual triage.&lt;/p></description></item><item><title>Building a Machine Learning Threat Detection System</title><link>https://francescocitti.com/projects/ml-threat-detection/</link><pubDate>Tue, 17 Dec 2024 00:00:00 +0000</pubDate><guid>https://francescocitti.com/projects/ml-threat-detection/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this project, I built a &lt;strong>threat detection system&lt;/strong> using machine learning and log data.&lt;/p>
 &lt;hr>
 &lt;h2 id="1-data-preprocessing">1. Data Preprocessing&lt;/h2>
