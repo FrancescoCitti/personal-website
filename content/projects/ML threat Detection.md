@@ -1,7 +1,7 @@
 
 +++
-title = "Building a Machine Learning-Based Threat Detection System"
-description = "An end-to-end cybersecurity project to detect threats using machine learning and log data."
+title = "Building a Machine Learning Threat Detection System"
+description = "A cybersecurity project to detect threats using machine learning and log data."
 type = ["projects", "post"]
 date = "2024-12-17"
 [author]

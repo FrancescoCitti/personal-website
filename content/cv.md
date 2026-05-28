@@ -50,9 +50,9 @@ Cybersecurity Engineer with 4+ years across cloud security, incident response an
 <p class="cv-meta">Feb 2024 – present &nbsp;·&nbsp; Dublin, Ireland</p>
 <p class="cv-role">Associate Security Engineer, Phorest Salon Software</p>
 
-* Identified IAM privilege risks across the organisation and engineered a Just-in-Time (JIT) integration, eliminating standing permissions for 140+ engineers and reducing breach blast radius company-wide.
+* Identified IAM privilege risks across the organisation and engineered a Just in Time (JIT) integration, eliminating standing permissions for 140+ engineers and reducing breach blast radius company-wide.
 * Built a SIEM from scratch, defining 60+ detection rules and ingestion pipelines establishing centralised real-time threat detection across the organisation for the first time.
-* Drove end-to-end remediation of 100+ critical vulnerabilities over 12 months, reducing exploitable attack surface by coordinating fixes across 5+ engineering teams.
+* Drove end to end remediation of 100+ critical vulnerabilities over 12 months, reducing exploitable attack surface by coordinating fixes across 5+ engineering teams.
 * Contributed to PCI DSS compliance implementation across 15+ in-scope systems, handling technical controls, evidence collection and gap remediation.
 * Embedded automated misconfiguration detection into 10+ CI/CD pipelines (GitHub Actions) and Terraform IaC, preventing security issues from reaching production.
 

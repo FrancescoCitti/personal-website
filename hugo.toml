@@ -113,6 +113,10 @@ disableHugoGeneratorInject = false
   #
   justifyContent = false  # Set "text-align: justify" to .post-content.
 
+  # GoatCounter analytics
+  # Sign up at goatcounter.com, then set the code (subdomain) you chose.
+  goatcounterCode = 'francescoc'
+
   # Integrate Plausible.io
   # plausibleDataDomain = 'test.com'
   # plausibleScriptSource = 'https://plausible.io/js/script.js'
