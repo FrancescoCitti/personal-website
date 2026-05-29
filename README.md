@@ -1,5 +1,5 @@
 
-# Francesco Citti — Personal Website
+# Francesco Citti 
 
 Personal portfolio built with **Hugo** and the **hello-friend-ng** theme. Covers projects, CV, and photography.
 
