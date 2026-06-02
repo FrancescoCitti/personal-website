@@ -11,7 +11,7 @@ name = "Francesco Citti"
 
 ## Overview
 
-ThreatMap is a static, GitHub Pages-deployable cyber threat intelligence visualization dashboard. It plots real-time indicators from public OSINT threat feeds—botnet C2 servers, top attacking IPs, known exploited vulnerabilities—on an interactive world map. No backend, no database, no paid APIs required.
+ThreatMap is a static, GitHub Pages-deployable cyber threat intelligence visualization dashboard. It plots real-time indicators from public OSINT threat feeds (botnet C2 servers, top attacking IPs, known exploited vulnerabilities) on an interactive world map. No backend, no database, no paid APIs required.
 
 ## The Problem
 
@@ -19,7 +19,7 @@ Existing geospatial intelligence platforms are complex to self-host: they requir
 
 ## How It Works
 
-GitHub Actions runs hourly cron jobs that fetch threat feeds, geolocate IPs against the ip-api.com free tier, and write the results as static GeoJSON files committed back to the repository. The SvelteKit frontend reads those files directly—no API calls at runtime. GitHub Pages serves the whole thing as static HTML.
+GitHub Actions runs hourly cron jobs that fetch threat feeds, geolocate IPs against the ip-api.com free tier, and write the results as static GeoJSON files committed back to the repository. The SvelteKit frontend reads those files directly, with no API calls at runtime. GitHub Pages serves the whole thing as static HTML.
 
 ```
 Threat feeds → GitHub Actions (hourly) → GeoJSON files → SvelteKit frontend → GitHub Pages
@@ -37,12 +37,14 @@ Each feed is toggleable as an independent layer on the map. Indicators are color
 
 ## Key Features
 
-- **Zero infrastructure**: no server, no database, no Docker—deploys entirely to GitHub Pages
-- **Layer controls**: per-feed toggles and clustering for large datasets
-- **Sidebar detail panel**: click any indicator to see IP, country flag, ASN, source attribution
-- **Stats dashboard**: floating pill showing total indicator count and per-feed breakdowns, including 30-day additions
-- **Data freshness indicator**: timestamp of last automated fetch displayed prominently
-- **MIT licensed**: no usage restrictions, fully auditable static assets
+| Feature | Detail |
+|---|---|
+| Zero infrastructure | No server, no database, no Docker, deploys entirely to GitHub Pages |
+| Layer controls | Per-feed toggles and clustering for large datasets |
+| Sidebar detail panel | Click any indicator to see IP, country flag, ASN, source attribution |
+| Stats dashboard | Floating pill showing total indicator count and per-feed breakdowns, including 30-day additions |
+| Data freshness indicator | Timestamp of last automated fetch displayed prominently |
+| MIT licensed | No usage restrictions, fully auditable static assets |
 
 ## Tech Stack
 
