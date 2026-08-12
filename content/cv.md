@@ -3,7 +3,7 @@ title: "CV"
 date: 2024-08-14
 ---
 
-<a href="/Francesco_Citti_cv.pdf" class="cv-download" download>Download CV</a>
+<a href="/Francesco_Citti_CV.pdf" class="cv-download" download>Download CV</a>
 
 <style>
 .cv-download {
@@ -47,7 +47,7 @@ Cybersecurity Engineer with 4+ years across cloud security, incident response an
 
 ## Experience
 
-<p class="cv-meta">Feb 2024 – present &nbsp;·&nbsp; Dublin, Ireland</p>
+<p class="cv-meta">Feb 2024 – May 2026 &nbsp;·&nbsp; Dublin, Ireland</p>
 <p class="cv-role">Associate Security Engineer, Phorest Salon Software</p>
 
 * Identified IAM privilege risks across the organisation and engineered a Just in Time (JIT) integration, eliminating standing permissions for 140+ engineers and reducing breach blast radius company-wide.
